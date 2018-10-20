@@ -60,7 +60,10 @@ public class SideMenuPanel : MonoBehaviour {
         sideMenu.GetChild((int)PlayerData.selectedLanguage).GetChild(0).gameObject.SetActive(true);
         sideMenu.GetChild((int)PlayerData.selectedLanguage).GetComponent<Text>().color = selectedFontColor;
 
+        // OnEnableを呼ぶ為にactiveの切り替え
         gameObject.SetActive(false);
         gameObject.SetActive(true);
+        menuImage.gameObject.SetActive(false);
+        menuImage.gameObject.SetActive(true);
     }
 }

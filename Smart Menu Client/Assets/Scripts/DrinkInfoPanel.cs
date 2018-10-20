@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class DrinkInfoPanel : MonoBehaviour {
@@ -35,9 +36,20 @@ public class DrinkInfoPanel : MonoBehaviour {
     // 画像をネットから取得して表示する関数
     IEnumerator SetImage(string url, RawImage rawImage)
     {
-        WWW www = new WWW(url);
-        yield return www;
-        rawImage.texture = www.textureNonReadable;
+        using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(url))
+        {
+            yield return uwr.SendWebRequest();
+
+            if (uwr.isNetworkError || uwr.isHttpError)
+            {
+                Debug.Log(uwr.error);
+            }
+            else
+            {
+                // Get downloaded asset bundle
+                rawImage.texture = DownloadHandlerTexture.GetContent(uwr);
+            }
+        }
     }
 
     Color color0 = new Color(1, 0.827451f, 0.05098039f);

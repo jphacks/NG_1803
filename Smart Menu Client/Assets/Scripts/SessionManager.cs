@@ -107,7 +107,6 @@ public class SessionManager : MonoBehaviour
         url += "&auth_token=" + sampleToken;
         url += "&menu_drink_id=" + menuDrinkId;
         url += "&language=" + (int)language;
-        Debug.Log(url);
         UnityWebRequest www = UnityWebRequest.Get(url);
         yield return www.SendWebRequest();
 

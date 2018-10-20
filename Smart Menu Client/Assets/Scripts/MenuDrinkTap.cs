@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MenuDrinkTap : MonoBehaviour {
 
@@ -14,8 +15,18 @@ public class MenuDrinkTap : MonoBehaviour {
         Vector2 topleft = new Vector2(info.topLeft.x * menuImageRect.sizeDelta.x, info.topLeft.y * menuImageRect.sizeDelta.y);
         Vector2 bottomRight = new Vector2(info.bottomRight.x * menuImageRect.sizeDelta.x, info.bottomRight.y * menuImageRect.sizeDelta.y);
         RectTransform rect = GetComponent<RectTransform>();
-        rect.localPosition = topleft - new Vector2(menuImageRect.sizeDelta.x / 2, 0);
+        rect.localPosition = new Vector2(topleft.x, topleft.y * -1) - new Vector2(menuImageRect.sizeDelta.x / 2, 0);
         rect.sizeDelta = bottomRight - topleft;
+        OnEnable();
+    }
+
+    private void OnEnable()
+    {
+        if (info != null && info.language != PlayerData.selectedLanguage){
+            transform.GetChild(0).GetComponent<Text>().text = info.drinkNames[(int)PlayerData.selectedLanguage];
+        } else {
+            transform.GetChild(0).GetComponent<Text>().text = "";
+        }
     }
 
     public void Tap(){
