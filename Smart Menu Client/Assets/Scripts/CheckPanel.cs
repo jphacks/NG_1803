@@ -15,8 +15,8 @@ public class CheckPanel : MonoBehaviour {
     public void OK(){
         loadingPanel.gameObject.SetActive(true);
         // サーバーへデータを送る
-        StartCoroutine(SessionManager.PostMenuImage(SMCamera.captureTexture, (string str) => {
-            Debug.Log(str);
+        StartCoroutine(SessionManager.PostMenuImage(SMCamera.captureTexture, (JsonNode menuImageDrinkInfos) => {
+            muneImage.AddTaps(menuImageDrinkInfos);
             LocationManager.Stop();
             loadingPanel.OnEndable(this);
         }));

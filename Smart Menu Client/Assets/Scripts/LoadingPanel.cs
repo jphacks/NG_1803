@@ -20,6 +20,7 @@ public class LoadingPanel : MonoBehaviour {
     public void End(){
         if (isEndable){
             checkPanel.OKEnd();
+            gameObject.SetActive(false);
         }
     }
 }

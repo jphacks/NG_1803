@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using MiniJSON;
 using UnityEngine;
 using UnityEngine.Networking;
 using System;
@@ -7,17 +8,17 @@ using System.IO;
 
 public class SessionManager : MonoBehaviour
 {
-    public enum Langage {
+    public enum Language {
         Japanese,
         English,
         Chinese
     }
 
-    const string requestUrl = "https://c0f97acd.ngrok.io/api/";
+    const string requestUrl = "https://6a88839d.ngrok.io/api/";
     const int sampleUserId = 8;
     const string sampleToken = "mMK7P4U5rSJ6FN8oN9g4";
 
-    public static IEnumerator PostMenuImage(Texture2D tex, Action<string> callback = null, string fileName = "fileName.jpg")
+    public static IEnumerator PostMenuImage(Texture2D tex, Action<JsonNode> callback = null, string fileName = "fileName.jpg")
     {
         // テクスチャをpngに変換
         byte[] img = tex.EncodeToJPG();
@@ -26,17 +27,12 @@ public class SessionManager : MonoBehaviour
         form.AddField("id", sampleUserId);
         form.AddField("auth_token", sampleToken);
         LocationInfo location = LocationManager.location;
-        /*
         if (location.timestamp != 0)
         {
             form.AddField("lat", location.latitude.ToString());
             form.AddField("lon", location.longitude.ToString());
             form.AddField("alt", location.altitude.ToString());
         }
-        */
-        form.AddField("lat", "23.134");
-        form.AddField("lon", "135.2314");
-        form.AddField("alt", "123.56");
         form.AddBinaryData("image_data", img, fileName, "image/jpeg");
 
         // HTTPリクエストを送る
@@ -48,19 +44,27 @@ public class SessionManager : MonoBehaviour
         {
             // POSTに失敗した場合，エラーログを出力
             Debug.Log(www.error);
+            //コールバックが登録されていれば実行
+            if (callback != null)
+            {
+                callback(null);
+            }
         }
         else
         {
             // POSTに成功した場合，レスポンスコードを出力
             Debug.Log(www.responseCode);
             Debug.Log(www.downloadHandler.text);
+
+            JsonNode json = JsonNode.Parse(www.downloadHandler.text);
+
+            //コールバックが登録されていれば実行
+            if (callback != null)
+            {
+                callback(json["menu_items_menu_drinks"]);
+            }
         }
 
-        //コールバックが登録されていれば実行
-        if (callback != null)
-        {
-            callback(www.downloadHandler.text);
-        }
     }
 
     // 直前のメニューを取得する関数
@@ -92,20 +96,13 @@ public class SessionManager : MonoBehaviour
     }
 
     // ドリンク情報を取得する関数
-    public void GetDrinkTest(){
-        GetDrinkInfo(sampleUserId, sampleToken, 0, Langage.Japanese);
-    }
-    public void GetDrinkInfo(int userId, string authToken, int menuDrinkId, Langage language)
-    {
-        StartCoroutine(GetDrinkInfo_IE(userId, authToken, menuDrinkId, language));
-    }
-    IEnumerator GetDrinkInfo_IE(int userId, string authToken, int menuDrinkId, Langage language)
+    public static IEnumerator GetDrinkInfo(int menuDrinkId, Language language, Action<string> callback = null)
     {
         // HTTPリクエストを送る
-        string url = requestUrl + "get_menu_drink";
+        string url = requestUrl + "menu_drinks/show";
         url += "?";
-        url += "id=" + userId;
-        url += "&auth_token=" + authToken;
+        url += "id=" + sampleUserId;
+        url += "&auth_token=" + sampleToken;
         url += "&menu_drink_id=" + menuDrinkId;
         url += "&language=" + language;
         UnityWebRequest www = UnityWebRequest.Get(url);
@@ -121,6 +118,10 @@ public class SessionManager : MonoBehaviour
             // POSTに成功した場合，レスポンスコードを出力
             Debug.Log(www.responseCode);
             Debug.Log(www.downloadHandler.text);
+        }
+
+        if (callback != null){
+            callback(www.downloadHandler.text);
         }
     }
 

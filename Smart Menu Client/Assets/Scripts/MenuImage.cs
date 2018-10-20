@@ -9,20 +9,32 @@ public class MenuImage : MonoBehaviour {
 
     [SerializeField]
     private RawImage rawImage;
+    [SerializeField]
+    GameObject tapPrefab;
 
-    float scale;
+    RectTransform rect;
 
     // Use this for initialization
     void Start () {
+        rect = GetComponent<RectTransform>();
         //表示
         rawImage.texture = SMCamera.captureTexture;
         rawImage.SetNativeSize();
-        scale = canvasWidthScale / rawImage.rectTransform.sizeDelta.x;
+        float scale = canvasWidthScale / rawImage.rectTransform.sizeDelta.x;
         rawImage.rectTransform.localScale = Vector3.one * scale;
     }
 
     public void MoveDown(){
-        RectTransform rect = GetComponent<RectTransform>();
         rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, menuImageMoveDown);
+    }
+
+    public void AddTaps(JsonNode tapInfos)
+    {
+        foreach (JsonNode tapInfo in tapInfos)
+        {
+            GameObject tapObj = Instantiate<GameObject>(tapPrefab);
+            tapObj.transform.SetParent(transform, false);
+            tapObj.GetComponent<MenuDrinkTap>().Init(tapInfo, rect);
+        }
     }
 }

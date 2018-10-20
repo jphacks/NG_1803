@@ -1719,6 +1719,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rawImage: {fileID: 1551157154}
+  tapPrefab: {fileID: 1278995587586064, guid: 83ccc79ac359745bd82a0cc4fb79e605, type: 2}
 --- !u!1 &1704086845
 GameObject:
   m_ObjectHideFlags: 0
