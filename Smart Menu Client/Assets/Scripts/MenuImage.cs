@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class MenuImage : MonoBehaviour {
 
     const int canvasWidthScale = 900;
-    const int menuImageMove = -150;
+    const int menuImageMoveDown = -150;
 
     [SerializeField]
     private RawImage rawImage;
@@ -23,6 +23,6 @@ public class MenuImage : MonoBehaviour {
 
     public void MoveDown(){
         RectTransform rect = GetComponent<RectTransform>();
-        rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, menuImageMove);
+        rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, menuImageMoveDown);
     }
 }
