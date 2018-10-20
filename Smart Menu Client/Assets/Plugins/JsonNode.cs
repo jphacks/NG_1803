@@ -95,7 +95,24 @@ public class JsonNode : IEnumerable<JsonNode>, IDisposable
 
     public T Get<T>()
     {
-        return (T)obj;
+        if (typeof(T) == typeof(float)){
+            if (obj is double) {
+                float floatObj = (float)(double)obj;
+                return (T)(Object)floatObj;
+            }
+            else if (obj is long) {
+                float floatObj = (float)(long)obj;
+                return (T)(Object)floatObj;
+            }
+            else {
+                return (T)obj;
+            }
+        } else if (typeof(T) == typeof(int)) {
+            int intObj = (int)(long)obj;
+            return (T)(Object)intObj;
+        } else {
+            return (T)obj;
+        }
     }
 
     public bool IsType<T>()

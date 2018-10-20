@@ -16,8 +16,9 @@ public class MenuDrinkTap : MonoBehaviour {
     }
 
     public void Tap(){
-        StartCoroutine(SessionManager.GetDrinkInfo(info.menuDrinkId, info.language, (string str) => {
-            Debug.Log("OK!!\n" + str);
+        StartCoroutine(SessionManager.GetDrinkInfo(info.menuDrinkId, info.language, (DrinkInfo drinkInfo) => {
+            Debug.Log(drinkInfo.category.name);
+            Debug.Log(drinkInfo.primaryName);
         }));
     }
 }

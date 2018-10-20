@@ -16,9 +16,14 @@ public class CheckPanel : MonoBehaviour {
         loadingPanel.gameObject.SetActive(true);
         // サーバーへデータを送る
         StartCoroutine(SessionManager.PostMenuImage(SMCamera.captureTexture, (JsonNode menuImageDrinkInfos) => {
-            muneImage.AddTaps(menuImageDrinkInfos);
-            LocationManager.Stop();
-            loadingPanel.OnEndable(this);
+            if (menuImageDrinkInfos == null) {
+                // 実際には写真の読み込みに失敗しましたとか表示する
+                Cancel();
+            } else {
+                muneImage.AddTaps(menuImageDrinkInfos);
+                LocationManager.Stop();
+                loadingPanel.OnEndable(this);
+            }
         }));
     }
 

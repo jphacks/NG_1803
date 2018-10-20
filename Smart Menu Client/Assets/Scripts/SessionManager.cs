@@ -55,12 +55,10 @@ public class SessionManager : MonoBehaviour
             // POSTに成功した場合，レスポンスコードを出力
             Debug.Log(www.responseCode);
             Debug.Log(www.downloadHandler.text);
-
-            JsonNode json = JsonNode.Parse(www.downloadHandler.text);
-
             //コールバックが登録されていれば実行
             if (callback != null)
             {
+                JsonNode json = JsonNode.Parse(www.downloadHandler.text);
                 callback(json["menu_items_menu_drinks"]);
             }
         }
@@ -96,7 +94,7 @@ public class SessionManager : MonoBehaviour
     }
 
     // ドリンク情報を取得する関数
-    public static IEnumerator GetDrinkInfo(int menuDrinkId, Language language, Action<string> callback = null)
+    public static IEnumerator GetDrinkInfo(int menuDrinkId, Language language, Action<DrinkInfo> callback = null)
     {
         // HTTPリクエストを送る
         string url = requestUrl + "menu_drinks/show";
@@ -112,16 +110,21 @@ public class SessionManager : MonoBehaviour
         {
             // POSTに失敗した場合，エラーログを出力
             Debug.Log(www.error);
+            if (callback != null)
+            {
+                callback(null);
+            }
         }
         else
         {
             // POSTに成功した場合，レスポンスコードを出力
             Debug.Log(www.responseCode);
             Debug.Log(www.downloadHandler.text);
-        }
-
-        if (callback != null){
-            callback(www.downloadHandler.text);
+            if (callback != null)
+            {
+                JsonNode json = JsonNode.Parse(www.downloadHandler.text);
+                callback(new DrinkInfo(json));
+            }
         }
     }
 
