@@ -77,4 +77,9 @@ public class DrinkInfoPanel : MonoBehaviour {
             compornent.transform.GetChild(0).GetComponent<Text>().text = compornents[i].amountNumber != 0 ? compornents[i].amountNumber.ToString() : compornents[i].amountString;
         }
     }
+
+    // 閉じる
+    public void Close(){
+        Destroy(gameObject);
+    }
 }

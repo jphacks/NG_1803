@@ -22,7 +22,7 @@ public class MenuDrinkTap : MonoBehaviour {
         Transform canvas = GameObject.FindGameObjectWithTag("MainCanvas").transform;
         GameObject drinkInfoPanel = Instantiate<GameObject>(drinkInfoPrefab);
         drinkInfoPanel.transform.SetParent(canvas, false);
-        StartCoroutine(SessionManager.GetDrinkInfo(info.menuDrinkId, info.language, (DrinkInfo drinkInfo) => {
+        StartCoroutine(SessionManager.GetDrinkInfo(info.menuDrinkId, PlayerData.selectedLanguage, (DrinkInfo drinkInfo) => {
             drinkInfoPanel.GetComponent<DrinkInfoPanel>().Set(drinkInfo);
         }));
     }

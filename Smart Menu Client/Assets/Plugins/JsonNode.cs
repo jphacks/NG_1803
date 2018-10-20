@@ -108,8 +108,16 @@ public class JsonNode : IEnumerable<JsonNode>, IDisposable
                 return (T)obj;
             }
         } else if (typeof(T) == typeof(int)) {
-            int intObj = (int)(long)obj;
-            return (T)(Object)intObj;
+            if (obj is long)
+            {
+                int intObj = (int)(long)obj;
+                return (T)(Object)intObj;
+            }
+            else
+            {
+                int returnNum = -1;
+                return (T)(Object)returnNum;
+            }
         } else {
             return (T)obj;
         }

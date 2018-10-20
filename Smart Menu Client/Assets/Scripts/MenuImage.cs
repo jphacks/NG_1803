@@ -25,7 +25,11 @@ public class MenuImage : MonoBehaviour {
     }
 
     public void MoveDown(){
-        rect.anchoredPosition = new Vector2(rect.anchoredPosition.x, menuImageMoveDown);
+        rect.anchoredPosition += new Vector2(0, menuImageMoveDown);
+    }
+    public void MoveRight(int right)
+    {
+        rect.anchoredPosition += new Vector2(right, 0);
     }
 
     public void AddTaps(JsonNode tapInfos)
