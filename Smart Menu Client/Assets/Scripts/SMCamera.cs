@@ -25,7 +25,7 @@ public class SMCamera : MonoBehaviour
     private IEnumerator Start()
     {
         SetScreenSize();
-//        LocationManager.Start();
+        LocationManager.Start();
 
         if (WebCamTexture.devices.Length == 0)
         {
@@ -68,8 +68,6 @@ public class SMCamera : MonoBehaviour
         StartCoroutine(Capture((int)top.sizeDelta.y, (int)bottom.sizeDelta.y, (Texture2D texture) =>
         {
             SMCamera.captureTexture = texture;
-//            LocationManager.Stop();
-//            StartCoroutine(FileUploader.UploadFile(texture));
             SceneManager.LoadScene("Main");
         }));
     }
