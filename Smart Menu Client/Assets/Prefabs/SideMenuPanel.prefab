@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 222282702162367482}
   - component: {fileID: 114515636299423778}
   - component: {fileID: 114726479013987744}
+  - component: {fileID: 114751327464954574}
   m_Layer: 5
   m_Name: Japanese
   m_TagString: Untagged
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 222752905640974134}
   - component: {fileID: 114095235053818886}
   - component: {fileID: 114666501122519804}
+  - component: {fileID: 114692730908572182}
   m_Layer: 5
   m_Name: Chinese
   m_TagString: Untagged
@@ -92,6 +94,7 @@ GameObject:
   - component: {fileID: 224765915405580432}
   - component: {fileID: 222728047748452320}
   - component: {fileID: 114419847587808220}
+  - component: {fileID: 114106159100680370}
   m_Layer: 5
   m_Name: HeadLine
   m_TagString: Untagged
@@ -110,7 +113,6 @@ GameObject:
   - component: {fileID: 222041553775103930}
   - component: {fileID: 114005307122157004}
   - component: {fileID: 114157060301405376}
-  - component: {fileID: 114759836504100290}
   m_Layer: 5
   m_Name: SideMenuPanel
   m_TagString: Untagged
@@ -118,6 +120,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+--- !u!1 &1486341632083642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224710631378702702}
+  - component: {fileID: 222920430177173866}
+  - component: {fileID: 114414745120949484}
+  - component: {fileID: 114732420085650128}
+  m_Layer: 5
+  m_Name: Return
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1511769090692304
 GameObject:
   m_ObjectHideFlags: 1
@@ -197,6 +217,7 @@ GameObject:
   - component: {fileID: 222246203349252128}
   - component: {fileID: 114073549439796750}
   - component: {fileID: 114065081429817564}
+  - component: {fileID: 114421442962725182}
   m_Layer: 5
   m_Name: English
   m_TagString: Untagged
@@ -383,6 +404,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u4E2D\u56FD\u8A9E"
+--- !u!114 &114106159100680370
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356605401356604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 658581c2e7fbc41438ed5e37ef23ce4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  japaneseText: "\u8A00\u8A9E\u5909\u66F4"
+  englishText: 'Change Language '
+  chineseText: "\u8BED\u8A00\u53D8\u5316"
 --- !u!114 &114121745875634674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -529,6 +564,33 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114414745120949484
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486341632083642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
 --- !u!114 &114419847587808220
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -562,6 +624,20 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u8A00\u8A9E\u5909\u66F4"
+--- !u!114 &114421442962725182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1789691446826466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 658581c2e7fbc41438ed5e37ef23ce4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  japaneseText: "\u82F1\u8A9E"
+  englishText: English
+  chineseText: "\u82F1\u8BED"
 --- !u!114 &114494313484482602
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -701,6 +777,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114692730908572182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1216773667910764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 658581c2e7fbc41438ed5e37ef23ce4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  japaneseText: "\u4E2D\u56FD\u8A9E"
+  englishText: Chinese
+  chineseText: "\u4E2D\u6587"
 --- !u!114 &114726479013987744
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -753,12 +843,12 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114759836504100290
+--- !u!114 &114732420085650128
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1482739261430790}
+  m_GameObject: {fileID: 1486341632083642}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
@@ -788,7 +878,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 114005307122157004}
+  m_TargetGraphic: {fileID: 0}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -805,6 +895,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114751327464954574
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1117769395406572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 658581c2e7fbc41438ed5e37ef23ce4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  japaneseText: "\u65E5\u672C\u8A9E"
+  englishText: Jaapanese
+  chineseText: "\u65E5\u8BED"
 --- !u!114 &114854940528140598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -969,6 +1073,13 @@ CanvasRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1989767898939556}
+  m_CullTransparentMesh: 0
+--- !u!222 &222920430177173866
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486341632083642}
   m_CullTransparentMesh: 0
 --- !u!222 &222973674225561114
 CanvasRenderer:
@@ -1168,6 +1279,24 @@ RectTransform:
   m_AnchoredPosition: {x: 225, y: 0}
   m_SizeDelta: {x: -450, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224710631378702702
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486341632083642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224891892159978938}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -225, y: 0}
+  m_SizeDelta: {x: -450, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224765915405580432
 RectTransform:
   m_ObjectHideFlags: 1
@@ -1197,6 +1326,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224670222760637250}
+  - {fileID: 224710631378702702}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
