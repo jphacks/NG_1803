@@ -14,7 +14,7 @@ public class SessionManager : MonoBehaviour
         Chinese
     }
 
-    const string requestUrl = "https://6a88839d.ngrok.io/api/";
+    const string requestUrl = "https://c64d422a.ngrok.io/api/";
     const int sampleUserId = 8;
     const string sampleToken = "mMK7P4U5rSJ6FN8oN9g4";
 
@@ -55,11 +55,15 @@ public class SessionManager : MonoBehaviour
             // POSTに成功した場合，レスポンスコードを出力
             Debug.Log(www.responseCode);
             Debug.Log(www.downloadHandler.text);
-            //コールバックが登録されていれば実行
-            if (callback != null)
-            {
-                JsonNode json = JsonNode.Parse(www.downloadHandler.text);
-                callback(json["menu_items_menu_drinks"]);
+
+            // 通信が正常に成功した場合はjsonをパースしてコールバック
+            if (www.responseCode == 200){
+                //コールバックが登録されていれば実行
+                if (callback != null)
+                {
+                    JsonNode json = JsonNode.Parse(www.downloadHandler.text);
+                    callback(json["menu_items_menu_drinks"]);
+                }
             }
         }
 
@@ -120,10 +124,15 @@ public class SessionManager : MonoBehaviour
             // POSTに成功した場合，レスポンスコードを出力
             Debug.Log(www.responseCode);
             Debug.Log(www.downloadHandler.text);
-            if (callback != null)
+
+            // 通信が正常に成功した場合はjsonをパースしてコールバック
+            if (www.responseCode == 200)
             {
-                JsonNode json = JsonNode.Parse(www.downloadHandler.text);
-                callback(new DrinkInfo(json));
+                if (callback != null)
+                {
+                    JsonNode json = JsonNode.Parse(www.downloadHandler.text);
+                    callback(new DrinkInfo(json));
+                }
             }
         }
     }

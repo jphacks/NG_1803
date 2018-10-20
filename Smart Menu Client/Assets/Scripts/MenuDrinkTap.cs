@@ -6,6 +6,9 @@ public class MenuDrinkTap : MonoBehaviour {
 
     MenuImageDrinkInfo info;
 
+    [SerializeField]
+    GameObject drinkInfoPrefab;
+
     public void Init (JsonNode infoJson, RectTransform menuImageRect) {
         this.info = new MenuImageDrinkInfo(infoJson);
         Vector2 topleft = new Vector2(info.topLeft.x * menuImageRect.sizeDelta.x, info.topLeft.y * menuImageRect.sizeDelta.y);
@@ -16,9 +19,11 @@ public class MenuDrinkTap : MonoBehaviour {
     }
 
     public void Tap(){
+        Transform canvas = GameObject.FindGameObjectWithTag("MainCanvas").transform;
+        GameObject drinkInfoPanel = Instantiate<GameObject>(drinkInfoPrefab);
+        drinkInfoPanel.transform.SetParent(canvas, false);
         StartCoroutine(SessionManager.GetDrinkInfo(info.menuDrinkId, info.language, (DrinkInfo drinkInfo) => {
-            Debug.Log(drinkInfo.category.name);
-            Debug.Log(drinkInfo.primaryName);
+            drinkInfoPanel.GetComponent<DrinkInfoPanel>().Set(drinkInfo);
         }));
     }
 }
