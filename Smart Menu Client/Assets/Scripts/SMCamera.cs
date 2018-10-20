@@ -8,12 +8,16 @@ public class SMCamera : MonoBehaviour
 {
     public static Texture2D captureTexture;
 
+    const int canvasHeightScale = 1600;
+
     private int m_width;
     private int m_height;
     [SerializeField]
     private RawImage m_displayUI = null;
     [SerializeField]
-    int bottomHeight;
+    RectTransform top;
+    [SerializeField]
+    RectTransform bottom;
 
     private WebCamTexture m_webCamTexture = null;
 
@@ -61,7 +65,7 @@ public class SMCamera : MonoBehaviour
         m_webCamTexture.Stop();
 
         // スクショ
-        StartCoroutine(Capture(bottomHeight, (Texture2D texture) =>
+        StartCoroutine(Capture((int)top.sizeDelta.y, (int)bottom.sizeDelta.y, (Texture2D texture) =>
         {
             SMCamera.captureTexture = texture;
 //            LocationManager.Stop();
@@ -92,12 +96,15 @@ public class SMCamera : MonoBehaviour
     /// <summary>
     /// スクリーンショットを撮る
     /// </summary>
-    public static IEnumerator Capture(int bottomHeight, Action<Texture2D> callback = null)
+    IEnumerator Capture(int topScale, int bottomScale, Action<Texture2D> callback = null)
     {
         yield return new WaitForEndOfFrame();
 
-        var texture = new Texture2D(Screen.width, Screen.height - bottomHeight);
-        texture.ReadPixels(new Rect(0, bottomHeight, Screen.width, Screen.height - bottomHeight), 0, 0);
+        int topHeight = Screen.height * topScale / canvasHeightScale;
+        int bottomHeight = Screen.height * bottomScale / canvasHeightScale;
+
+        var texture = new Texture2D(Screen.width, Screen.height - topHeight - bottomHeight);
+        texture.ReadPixels(new Rect(0, bottomHeight, Screen.width, Screen.height - topHeight - bottomHeight), 0, 0);
         texture.Apply();
 
         //コールバックが登録されていれば実行
