@@ -82,11 +82,17 @@
 
 ##### サーバーサイド
 * Google Cloud Vision APIのOCR機能向上
-* あいまい検索、類似度検索：シムストリング
+* あいまい検索、類似度検索:「高速な類似文字列検索アルゴリズム」を実装したSimStringのRuby移植ライブラリ
 * DB構築（ER図）
 * ドリンクデータの収集（Python）
 * ドリンクデータのDB形式への整形（Python）
 
 * 特に力を入れた部分をファイルリンク、またはcommit_idを記載してください（任意）
 * 想定しうる全ての情報を入れ、アルコール度数、味、材料など様々な条件で検索可能。かつ何カ国語にも対応できる様拡張性の高いデータベース設計になっている
-*GoogleCloudVisionAPI OCRの
+[NG_1803_2 /db/schema.rb](https://github.com/jphacks/NG_1803_2/blob/master/db/schema.rb)
+
+* GoogleCloudVisionAPI OCRは日本語対応の他のAPIやライブラリに比べて高いが、単語や文字がかなり細かく切られて取得される傾向があったため，適切に結合する機能を実装した
+[NG_1803_2 /lib/google_vision_api.rb](https://github.com/jphacks/NG_1803_2/blob/master/lib/google_vision_api.rb#L38)
+
+* お店によると，「ファジーネーブル」「ファジー・ネーブル」などの表記揺れやOCRの誤認識に対応するために，高速なあいまい検索をライブラリを用いて実装した
+[NG_1803_2 /controllers/menu_images_controller.rb](https://github.com/jphacks/NG_1803_2/blob/master/app/controllers/menu_images_controller.rb#L72)
