@@ -9,11 +9,14 @@ public class LoadingPanel : MonoBehaviour {
 
     [SerializeField]
     GameObject ok;
+    [SerializeField]
+    GameObject loading;
 
     public void OnEndable(CheckPanel checkPanel)
     {
         isEndable = true;
         ok.SetActive(true);
+        loading.SetActive(false);
         this.checkPanel = checkPanel;
     }
 

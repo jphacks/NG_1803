@@ -10,6 +10,9 @@ public class MenuDrinkTap : MonoBehaviour {
     [SerializeField]
     GameObject drinkInfoPrefab;
 
+    Text text;
+    Image image;
+
     public void Init (JsonNode infoJson, RectTransform menuImageRect) {
         this.info = new MenuImageDrinkInfo(infoJson);
         Vector2 topleft = new Vector2(info.topLeft.x * menuImageRect.sizeDelta.x, info.topLeft.y * menuImageRect.sizeDelta.y);
@@ -17,15 +20,25 @@ public class MenuDrinkTap : MonoBehaviour {
         RectTransform rect = GetComponent<RectTransform>();
         rect.localPosition = new Vector2(topleft.x, topleft.y * -1) - new Vector2(menuImageRect.sizeDelta.x / 2, 0);
         rect.sizeDelta = bottomRight - topleft;
+
+        image = GetComponent<Image>();
+        text = transform.GetChild(0).GetComponent<Text>();
         OnEnable();
     }
 
     private void OnEnable()
     {
-        if (info != null && info.language != PlayerData.selectedLanguage){
-            transform.GetChild(0).GetComponent<Text>().text = info.drinkNames[(int)PlayerData.selectedLanguage];
-        } else {
-            transform.GetChild(0).GetComponent<Text>().text = "";
+        if (info != null){
+            if (info.language != PlayerData.selectedLanguage)
+            {
+                text.text = info.drinkNames[(int)PlayerData.selectedLanguage];
+                image.color = new Color(1, 1, 1, 1);
+            }
+            else
+            {
+                text.text = "";
+                image.color = new Color(1, 1, 1, 0.3f);
+            }
         }
     }
 
