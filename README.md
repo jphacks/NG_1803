@@ -61,6 +61,7 @@
 #### フレームワーク・ライブラリ・モジュール
 * Unity
 * Ruby on Rails
+* [Ruimoji](http://yktwww.hatenablog.com/entry/2015/10/10/101730)
 
 #### デバイス
 * スマートフォン
