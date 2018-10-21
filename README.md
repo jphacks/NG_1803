@@ -90,6 +90,7 @@
 * 特に力を入れた部分をファイルリンク、またはcommit_idを記載してください（任意）
 * 想定しうる全ての情報を入れ、アルコール度数、味、材料など様々な条件で検索可能。かつ何カ国語にも対応できる様拡張性の高いデータベース設計になっている
 [NG_1803_2 /db/schema.rb](https://github.com/jphacks/NG_1803_2/blob/master/db/schema.rb)
+[![DataBaseER](er.png)]
 
 * GoogleCloudVisionAPI OCRは日本語対応の他のAPIやライブラリに比べて高いが、単語や文字がかなり細かく切られて取得される傾向があったため，適切に結合する機能を実装した
 [NG_1803_2 /lib/google_vision_api.rb](https://github.com/jphacks/NG_1803_2/blob/master/lib/google_vision_api.rb#L38)
