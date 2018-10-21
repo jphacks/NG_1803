@@ -36,6 +36,7 @@ public class DrinkInfoPanel : MonoBehaviour {
     // 画像をネットから取得して表示する関数
     IEnumerator SetImage(string url, RawImage rawImage)
     {
+        url = "https://www.eatsmart.jp/image/food/00/00/07/174794.jpg";
         using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(url))
         {
             yield return uwr.SendWebRequest();
