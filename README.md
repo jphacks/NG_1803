@@ -81,7 +81,7 @@
 * アニメーション（Unity）
 * サーバーとの通信（Unity）
 
-##### サーバーサイド (Ruby on Rails 5)
+##### サーバーサイド (Ruby on Rails 5) Heroku上でデプロイ
 * Google Cloud Vision APIのOCR機能向上
 * あいまい検索、類似度検索:「高速な類似文字列検索アルゴリズム」を実装したSimStringのRuby移植ライブラリ
 * DB構築（ER図）
