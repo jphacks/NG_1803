@@ -25,6 +25,7 @@ public class MenuDrinkTap : MonoBehaviour {
             GameObject icons = Instantiate<GameObject>(iconsPre);
             icons.transform.SetParent(transform, false);
             icons.transform.localPosition = new Vector2(-25, rect.sizeDelta.y/2 * -1);
+            icons.transform.SetParent(transform.parent, true);
         }
 
         image = GetComponent<Image>();

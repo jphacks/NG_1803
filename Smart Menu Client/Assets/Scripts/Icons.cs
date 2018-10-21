@@ -7,6 +7,7 @@ public class Icons : MonoBehaviour {
     const float time = 0.5f;
 
     Animator animator;
+    bool isTrue = false;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,11 @@ public class Icons : MonoBehaviour {
     }
 
     public void ToSmall(){
-        animator.SetBool("isShow", true);
+        if (isTrue){
+            animator.SetBool("isShow", false);
+        } else {
+            animator.SetBool("isShow", true);
+        }
+        isTrue = !isTrue;
     }
 }
