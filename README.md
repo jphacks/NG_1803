@@ -2,6 +2,9 @@
 
 [![PicMenu](image.png)](https://www.youtube.com/watch?v=G5rULR53uMk)
 
+## APIサーバのリポジトリ
+[NG_1803_2](https://github.com/jphacks/NG_1803_2)
+
 ## 製品概要
 ### Menu Tech
 
@@ -85,5 +88,5 @@
 * ドリンクデータのDB形式への整形（Python）
 
 * 特に力を入れた部分をファイルリンク、またはcommit_idを記載してください（任意）
-* 
-* 
+* 想定しうる全ての情報を入れ、アルコール度数、味、材料など様々な条件で検索可能。かつ何カ国語にも対応できる様拡張性の高いデータベース設計になっている
+*GoogleCloudVisionAPI OCRの
