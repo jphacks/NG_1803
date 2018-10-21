@@ -14,7 +14,7 @@ public class SessionManager : MonoBehaviour
         Chinese
     }
 
-    const string requestUrl = "https://49848c81.ngrok.io/api/";
+    const string requestUrl = "https://3f224b63.ngrok.io/api/";
     const int sampleUserId = 8;
     const string sampleToken = "mMK7P4U5rSJ6FN8oN9g4";
 

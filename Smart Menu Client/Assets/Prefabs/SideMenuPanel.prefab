@@ -907,7 +907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   japaneseText: "\u65E5\u672C\u8A9E"
-  englishText: Jaapanese
+  englishText: Japanese
   chineseText: "\u65E5\u8BED"
 --- !u!114 &114854940528140598
 MonoBehaviour:
