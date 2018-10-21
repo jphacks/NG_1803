@@ -13,13 +13,19 @@ public class MenuDrinkTap : MonoBehaviour {
     Text text;
     Image image;
 
-    public void Init (JsonNode infoJson, RectTransform menuImageRect) {
+    public void Init (JsonNode infoJson, RectTransform menuImageRect, GameObject iconsPre) {
         this.info = new MenuImageDrinkInfo(infoJson);
         Vector2 topleft = new Vector2(info.topLeft.x * menuImageRect.sizeDelta.x, info.topLeft.y * menuImageRect.sizeDelta.y);
         Vector2 bottomRight = new Vector2(info.bottomRight.x * menuImageRect.sizeDelta.x, info.bottomRight.y * menuImageRect.sizeDelta.y);
         RectTransform rect = GetComponent<RectTransform>();
         rect.localPosition = new Vector2(topleft.x, topleft.y * -1) - new Vector2(menuImageRect.sizeDelta.x / 2, 0);
         rect.sizeDelta = bottomRight - topleft;
+
+        if (iconsPre) {
+            GameObject icons = Instantiate<GameObject>(iconsPre);
+            icons.transform.SetParent(transform, false);
+            icons.transform.localPosition = new Vector2(-25, rect.sizeDelta.y/2 * -1);
+        }
 
         image = GetComponent<Image>();
         text = transform.GetChild(0).GetComponent<Text>();

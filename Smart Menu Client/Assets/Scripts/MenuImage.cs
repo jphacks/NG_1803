@@ -12,6 +12,9 @@ public class MenuImage : MonoBehaviour {
     [SerializeField]
     GameObject tapPrefab;
 
+    [SerializeField]
+    GameObject[] iconsPres;
+
     RectTransform rect;
 
     // Use this for initialization
@@ -34,11 +37,25 @@ public class MenuImage : MonoBehaviour {
 
     public void AddTaps(JsonNode tapInfos)
     {
+        int i = 0;
         foreach (JsonNode tapInfo in tapInfos)
         {
             GameObject tapObj = Instantiate<GameObject>(tapPrefab);
             tapObj.transform.SetParent(transform, false);
-            tapObj.GetComponent<MenuDrinkTap>().Init(tapInfo, rect);
+            if (i < 2)
+            {
+                tapObj.GetComponent<MenuDrinkTap>().Init(tapInfo, rect, iconsPres[i]);
+                i++;
+            } else {
+                tapObj.GetComponent<MenuDrinkTap>().Init(tapInfo, rect, null);
+            }
+        }
+    }
+
+    public void ToSmall(){
+        Icons[] icons = GetComponentsInChildren<Icons>();
+        foreach (Icons icon in icons){
+            icon.ToSmall();
         }
     }
 }

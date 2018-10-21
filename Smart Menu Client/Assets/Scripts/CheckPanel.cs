@@ -14,7 +14,6 @@ public class CheckPanel : MonoBehaviour {
 
     public void OK(){
         loadingPanel.gameObject.SetActive(true);
-        /*
         // サーバーへデータを送る
         StartCoroutine(SessionManager.PostMenuImage(SMCamera.captureTexture, (JsonNode menuImageDrinkInfos) => {
             if (menuImageDrinkInfos == null) {
@@ -27,12 +26,12 @@ public class CheckPanel : MonoBehaviour {
             }
         }));
         /*
-        */
         string str = "[{\"menu_drink_id\":2,\"drink_names\":[\"ザ・プレミアム・モルツ 香るエール\",\"The Premium Malt's\",\"优质麦芽\"],\"points\":[0.1,0.2,0.4,0.25],\"language\":0,\"option\":[]},{\"menu_drink_id\":2,\"drink_names\":[\"ザ・プレミアム・モルツ 香るエール\",\"The Premium Malt's\",\"优质麦芽\"],\"points\":[0.1,0.4,0.4,0.45],\"language\":0,\"option\":[]}]";
         JsonNode menuImageDrinkInfos = JsonNode.Parse(str);
         muneImage.AddTaps(menuImageDrinkInfos);
         LocationManager.Stop();
         loadingPanel.OnEndable(this);
+        */
     }
 
     public void OKEnd()

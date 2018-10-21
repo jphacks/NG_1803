@@ -15,7 +15,7 @@ public class DrinkInfoPanel : MonoBehaviour {
 
     public void Set(DrinkInfo drinkInfo)
     {
-        transform.GetChild(0).gameObject.SetActive(false);
+        GetComponent<Image>().color = new Color(0, 0, 0, 0.5f);
 
         Transform baseInfo = transform.GetChild(1);
         baseInfo.gameObject.SetActive(true);
