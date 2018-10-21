@@ -42,7 +42,7 @@ public class MenuDrinkTap : MonoBehaviour {
             if (info.language != PlayerData.selectedLanguage)
             {
                 text.text = info.drinkNames[(int)PlayerData.selectedLanguage];
-                text.fontSize = (int)(rect.sizeDelta.y * 3/4);
+                text.fontSize = (int)(rect.sizeDelta.y * 3/5);
                 image.color = new Color(1, 1, 1, 1);
             }
             else

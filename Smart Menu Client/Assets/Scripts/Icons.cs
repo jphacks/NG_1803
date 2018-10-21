@@ -5,6 +5,7 @@ using UnityEngine;
 public class Icons : MonoBehaviour {
 
     const float time = 0.5f;
+    const float intervalTime = 1;
 
     Animator animator;
     bool isTrue = false;
@@ -15,17 +16,29 @@ public class Icons : MonoBehaviour {
         StartCoroutine(Coro());
 	}
 
+    float dTime = 0;
+    private void Update()
+    {
+        dTime += Time.deltaTime;        
+    }
+
     IEnumerator Coro(){
         yield return new WaitForSeconds(time);
         animator.SetBool("isShow", false);
     }
 
     public void ToSmall(){
-        if (isTrue){
-            animator.SetBool("isShow", false);
-        } else {
-            animator.SetBool("isShow", true);
+        if (dTime > intervalTime){
+            dTime = 0;
+            if (isTrue)
+            {
+                animator.SetBool("isShow", false);
+            }
+            else
+            {
+                animator.SetBool("isShow", true);
+            }
+            isTrue = !isTrue;
         }
-        isTrue = !isTrue;
     }
 }
