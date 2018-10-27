@@ -45,10 +45,11 @@ public class DrinkInfoPanel : MonoBehaviour {
             // 産地
             patternB.GetChild(0).GetChild(0).GetComponent<Text>().text = drinkInfo.location != "" ? drinkInfo.location : "ー";
             // 出典
-            if (drinkInfo.source.url == ""){
+            sourceUrl = drinkInfo.source.url;
+            if (sourceUrl == ""){
                 patternB.GetChild(1).gameObject.SetActive(false);
             } else {
-                patternB.GetChild(1).GetChild(0).GetComponent<Text>().text = drinkInfo.source.url;
+                patternB.GetChild(1).GetChild(0).GetComponent<Text>().text = sourceUrl;
             }
         }
     }
@@ -116,6 +117,12 @@ public class DrinkInfoPanel : MonoBehaviour {
             compornent.GetComponent<Text>().text = compornents[i].name;
             compornent.transform.GetChild(0).GetComponent<Text>().text = compornents[i].amountNumber != 0 ? compornents[i].amountNumber.ToString() : compornents[i].amountString;
         }
+    }
+
+    // 出典先のWebページを表示する
+    private string sourceUrl;
+    public void OpenSourceURL() {
+        Application.OpenURL(sourceUrl);
     }
 
     // 閉じる
