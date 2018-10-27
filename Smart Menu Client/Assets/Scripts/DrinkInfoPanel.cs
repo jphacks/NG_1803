@@ -21,18 +21,36 @@ public class DrinkInfoPanel : MonoBehaviour {
 
         Transform baseInfo = transform.GetChild(1);
         baseInfo.gameObject.SetActive(true);
-
+        // 画像
         StartCoroutine(SetImage(drinkInfo.imageUrl, baseInfo.GetChild(0).GetComponent<RawImage>()));
-
-        baseInfo.GetChild(1).GetComponent<Text>().text = drinkInfo.primaryName;
-        baseInfo.GetChild(1).GetChild(0).GetComponent<Text>().text = drinkInfo.category.name;
-        baseInfo.GetChild(1).GetChild(1).GetComponent<Text>().text = drinkInfo.drinkBase.name;
-
-        baseInfo.GetChild(3).GetChild(0).GetComponent<Text>().text = drinkInfo.taste;
-
+        // 名前、カテゴリー、ベース
+        baseInfo.GetChild(1).GetComponent<Text>().text = drinkInfo.primaryName != "" ? drinkInfo.primaryName : "ー";
+        baseInfo.GetChild(1).GetChild(0).GetComponent<Text>().text = drinkInfo.category.name != "" ? drinkInfo.category.name : "ー";
+        baseInfo.GetChild(1).GetChild(1).GetComponent<Text>().text = drinkInfo.drinkBase.name != "" ? drinkInfo.drinkBase.name : "ー";
+        // 味
+        baseInfo.GetChild(3).GetChild(0).GetComponent<Text>().text = drinkInfo.taste != "" ? drinkInfo.taste : "ー";
+        // 度数
         SetDegreeGauge(baseInfo.GetChild(4).GetChild(0), drinkInfo.minDegree, drinkInfo.maxDegree);
 
-        SetCompornents(baseInfo.GetChild(5), drinkInfo.compornents);
+        // パターンA
+        if (drinkInfo.category.viewType == DrinkInfo.ViewType.Cocktail){
+            // 構成要素
+            SetCompornents(baseInfo.GetChild(5), drinkInfo.compornents);
+
+        // パターンB
+        } else {
+            baseInfo.GetChild(5).gameObject.SetActive(false);
+            Transform patternB = baseInfo.GetChild(6);
+            patternB.gameObject.SetActive(true);
+            // 産地
+            patternB.GetChild(0).GetChild(0).GetComponent<Text>().text = drinkInfo.location != "" ? drinkInfo.location : "ー";
+            // 出典
+            if (drinkInfo.source.url == ""){
+                patternB.GetChild(1).gameObject.SetActive(false);
+            } else {
+                patternB.GetChild(1).GetChild(0).GetComponent<Text>().text = drinkInfo.source.url;
+            }
+        }
     }
 
     // 画像をネットから取得して表示する関数
@@ -61,13 +79,15 @@ public class DrinkInfoPanel : MonoBehaviour {
     }
 
     Color color0 = new Color(1, 0.827451f, 0.05098039f);
-    Color color1 = new Color(0.9098039f, 0.6666667f, 0.6666667f);
+//    Color color1 = new Color(0.9098039f, 0.6666667f, 0.6666667f);
     Color color2 = new Color(1, 0.6156863f, 0);
-    Color color3 = new Color(0.9098039f, 0.4627451f, 0.04705882f);
+//    Color color3 = new Color(0.9098039f, 0.4627451f, 0.04705882f);
     Color color4 = new Color(1, 0.372549f, 0.05098039f);
     // 度数のゲージ表示
     void SetDegreeGauge(Transform gauge, int min, int max){
-        if (max <= 8) {
+        if (max <= 0) {
+            // ノンアルなので色はつけない
+        } else if (max <= 8) {
             gauge.GetChild(0).GetChild(0).GetComponent<Image>().color = color0;
         } else if (max <= 25) {
             if (min < 8){
