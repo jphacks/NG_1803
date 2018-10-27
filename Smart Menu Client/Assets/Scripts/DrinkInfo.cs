@@ -113,6 +113,8 @@ public class DrinkInfo {
     public Source source;
     public Compornent[] compornents;
 
+    public DrinkInfo()
+    {}
     public DrinkInfo(JsonNode json)
     {
         this.menuDrinkId = json["menu_drink_id"].Get<int>();

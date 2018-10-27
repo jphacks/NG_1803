@@ -60,5 +60,6 @@ public class MenuDrinkTap : MonoBehaviour {
         StartCoroutine(SessionManager.GetDrinkInfo(info.menuDrinkId, PlayerData.selectedLanguage, (DrinkInfo drinkInfo) => {
             drinkInfoPanel.GetComponent<DrinkInfoPanel>().Set(drinkInfo);
         }));
+//        drinkInfoPanel.GetComponent<DrinkInfoPanel>().Set(new DrinkInfo());
     }
 }

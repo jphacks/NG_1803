@@ -8,6 +8,8 @@ public class DrinkInfoPanel : MonoBehaviour {
 
     [SerializeField]
     GameObject compornentPrefab;
+    [SerializeField]
+    Texture defualtDrinkImage;
 
     void Start()
     {
@@ -36,6 +38,8 @@ public class DrinkInfoPanel : MonoBehaviour {
     // 画像をネットから取得して表示する関数
     IEnumerator SetImage(string url, RawImage rawImage)
     {
+//        url = "https://www.suntory.co.jp/wnb/img/cocktail/p_gimlet.gif";
+//        url = "https://cdn-ak.f.st-hatena.com/images/fotolife/b/bollet/20180329/20180329010558.jpg";
         using (UnityWebRequest uwr = UnityWebRequestTexture.GetTexture(url))
         {
             yield return uwr.SendWebRequest();
@@ -43,11 +47,15 @@ public class DrinkInfoPanel : MonoBehaviour {
             if (uwr.isNetworkError || uwr.isHttpError)
             {
                 Debug.Log(uwr.error);
+                rawImage.texture = defualtDrinkImage;
             }
             else
             {
-                // Get downloaded asset bundle
-                rawImage.texture = DownloadHandlerTexture.GetContent(uwr);
+                Texture dlTexture = DownloadHandlerTexture.GetContent(uwr);
+                if (dlTexture.isBogus()) // 失敗
+                    rawImage.texture = defualtDrinkImage;
+                else // 成功
+                    rawImage.texture = dlTexture;
             }
         }
     }
