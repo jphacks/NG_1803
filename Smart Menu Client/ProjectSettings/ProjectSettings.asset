@@ -151,7 +151,8 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    iOS: tmy.jack.smartmenu
+    Android: tmy.jack.picmenu
+    iOS: tmy.jack.picmenu
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 16
