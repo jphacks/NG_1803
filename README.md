@@ -1,6 +1,6 @@
 ﻿# PicMenu
 
-[![PicMenu](image.png)](https://youtu.be/EAwS96AFHaE)
+[![PicMenu](image.png)](https://youtu.be/eYvQaFnVpT8)
 
 ## APIサーバのリポジトリ
 [NG_1803_2](https://github.com/jphacks/NG_1803_2)
